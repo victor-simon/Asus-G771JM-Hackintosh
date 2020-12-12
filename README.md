@@ -83,3 +83,4 @@ Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mod
  - All `Common Patches` from the RehabMan guide have been applied to the DSDT, including the `Fix PNOT/PPNT` patch, as I am <ins>not</ins> including OEM SSDT *(only ssdtPRGen SSDT)* and also apply  `Add IMEI` patch as DSDT does **not** contain HECI/IMEI device.
  - Applied `USB3_PRW 0x0D (instant wake)` patch to fix USB causing wake after sleep.
  - Applied `[bat] Asus G75VW` patch for battery status support.
+ - Applied [patches to disable Nvidia Optimus](https://www.insanelymac.com/forum/topic/295584-disabling-nvidia-optimus-card-on-all-laptops/) and improve battery life.
