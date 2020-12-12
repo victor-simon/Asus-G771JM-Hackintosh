@@ -63,6 +63,7 @@ Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mod
 - Using **[Lilu.kext](https://github.com/acidanthera/lilu/releases)** and **[WhateverGreen.kext](https://github.com/acidanthera/whatevergreen/releases)** to enable Intel HD4600 _(with FakeID injection and device properties defined in Clover as outlined above)_
 - Using  **[VirtualSMC](https://github.com/acidanthera/virtualsmc/releases)**  _(instead of  [FakeSMC](https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/)  and  [ACPIBatteryManager.kext](https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/))_ to enable battery status
 	- Include all VirtualSMC kexts except for `SMCDellSensors.kext`
+	- Patch DSDT with Rehabaman's `Asus G75VW`  battery patch
 - Using **[AsusSMC](https://github.com/hieplpvip/AsusSMC)** with `[als] Fake ALS` and `[kbd] Haswell` and `F3 to F6` patches without AsusSMCDaemon to enable Asus Function Keys and Keyboard Backlight _(instead of  [AsusNBFnKeys.kext](https://osxlatitude.com/forums/topic/1968-fn-hotkey-and-als-sensor-driver-for-asus-notebooks/))_
 - Using acidanthera's [VoodooPS2.kext](https://github.com/acidanthera/VoodooPS2) instead of emlydinesh's [ApplePS2SmartTouchPad.kext](https://osxlatitude.com/forums/topic/1948-elan-focaltech-and-synaptics-smart-touchpad-driver-mac-os-x) which supports AsusSMC and F9 key to disable trackpad
 - Using acidanthera's [AirportBrcmFixup.kext](https://github.com/acidanthera/AirportBrcmFixup) to enable wireless but need to set `brcmfx-driver=2` boot argument to enable, as well as removing `AirPortBrcm4360_Injector.kext` from plugins folder within kext to support Big Sur.
@@ -74,3 +75,11 @@ Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mod
 - Using Mieze's  [RealtekRTL8111.kext](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) to enable LAN
 - Using modified version of Rehabman's [CodecCommander.kext](https://bitbucket.org/RehabMan/os-x-eapd-codec-commander/downloads/) for `ALC668` to resolve [audio issue](https://www.tonymacx86.com/threads/alc1150-dual-boot-with-windows-and-10-10-3-no-sound-solved.162380/) when dual-booting with Windows.
 - Using acidanthera's [NVMeFix](https://github.com/acidanthera/NVMeFix) to improve support for NVMe drive and enable TRIM *(optional)*
+
+**DSDT RELATED:**
+
+ - [This guide](https://www.tonymacx86.com/threads/guide-patching-laptop-dsdt-ssdts.152573/)  by RehabMan is still *one of the best* by far when it comes to disassembling and modifying the DSDT.
+
+ - All `Common Patches` from the RehabMan guide have been applied to the DSDT, including the `Fix PNOT/PPNT` patch, as I am <ins>not</ins> including OEM SSDT *(only ssdtPRGen SSDT)* and also apply  `Add IMEI` patch as DSDT does **not** contain HECI/IMEI device.
+ - Applied `USB3_PRW 0x0D (instant wake)` patch to fix USB causing wake after sleep.
+ - Applied `[bat] Asus G75VW` patch for battery status support.
