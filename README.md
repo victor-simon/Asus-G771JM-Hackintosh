@@ -22,6 +22,9 @@ It's been a very long time since I've done a *fresh install* on this unit, as I 
  - You need to enable some DSDT patches in Clover to support Catalina or greater, specifically the `EC0 to EC` patch *(see more detailed installation notes below)* but essentially can use the same `config.plist` for Clover on your installation USB if installed for the same `Asus G771JM` model.
 
 ## Detailed Installation and Configuration Notes
+**BIOS RELATED:**
+
+Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mode is disabled.   If VT-d left enabled, ensure to enable `DsiableIoMapper` quirk in Clover.
 
 **CLOVER RELATED:**
 
@@ -39,5 +42,21 @@ It's been a very long time since I've done a *fresh install* on this unit, as I 
 	 - SetupVitrualMap
 	 - DsiableIoMapper *(if VT-d enabled in BIOS)* 
 	 - XhciPortLimit
+
+- `Devices` has  `IntelGFX` set to `0x04128086`, `Audio` -> `Inject`set to 3, `SetIntelBacklight` and `SetIntelMaxBacklight` enabled.
+	- `PciRoot(0x0)/Pci(0x1B,0x0)` is defined with the following properties: 
+		- key: `No-hda-gfx` value: `00000000 00000000 00` type: `DATA`
+		-  key: `alc-layout-id` value: `3` type: `NUMBER`
+	- `PciRoot(0x0)/Pci(0x2,0x0)` is defined with the following properties:
+	- key: `AAPL,ig-platform-id` value: `0600260A` type: `DATA`
+	- key: `device-id` value: `12040000` type: `DATA`
+	- key: `framebuffer-con1-enable` value: `01000000` type: `DATA`
+	- key: `framebuffer-con1-pipe` valuue: `12000000` type: `DATA`
+	- key: `framebuffer-con2-enable` value: `01000000` type: `DATA`
+	- key: `framebuffer-con2-pipe` value: `12000000` type: `DATA`
+	- key: `framebuffer-cursormem` value: `00009000` type: `DATA`
+	- key: `framebuffer-patch-enable` value: `01000000` type: `DATA`
+
+- Note that it's better NOT to use the CsmVideoDxe.efi to enable higher resolutions if/when using external monitors and keep Clover boot resolution at 1024x768.
 
 
