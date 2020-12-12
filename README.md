@@ -48,14 +48,14 @@ Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mod
 		- key: `No-hda-gfx` value: `00000000 00000000 00` type: `DATA`
 		-  key: `alc-layout-id` value: `3` type: `NUMBER`
 	- `PciRoot(0x0)/Pci(0x2,0x0)` is defined with the following properties:
-	- key: `AAPL,ig-platform-id` value: `0600260A` type: `DATA`
-	- key: `device-id` value: `12040000` type: `DATA`
-	- key: `framebuffer-con1-enable` value: `01000000` type: `DATA`
-	- key: `framebuffer-con1-pipe` valuue: `12000000` type: `DATA`
-	- key: `framebuffer-con2-enable` value: `01000000` type: `DATA`
-	- key: `framebuffer-con2-pipe` value: `12000000` type: `DATA`
-	- key: `framebuffer-cursormem` value: `00009000` type: `DATA`
-	- key: `framebuffer-patch-enable` value: `01000000` type: `DATA`
+		- key: `AAPL,ig-platform-id` value: `0600260A` type: `DATA`
+		- key: `device-id` value: `12040000` type: `DATA`
+		- key: `framebuffer-con1-enable` value: `01000000` type: `DATA`
+		- key: `framebuffer-con1-pipe` valuue: `12000000` type: `DATA`
+		- key: `framebuffer-con2-enable` value: `01000000` type: `DATA`
+		- key: `framebuffer-con2-pipe` value: `12000000` type: `DATA`
+		- key: `framebuffer-cursormem` value: `00009000` type: `DATA`
+		- key: `framebuffer-patch-enable` value: `01000000` type: `DATA`
 
 - Note that it's better NOT to use the CsmVideoDxe.efi to enable higher resolutions if/when using external monitors and keep Clover boot resolution at 1024x768.
 
