@@ -70,3 +70,5 @@ Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mod
 	-  `BrcmPatchRAM3.kext`, `BrcmFirmwareData.kext`, and `BrcmBluetoothInjector.kext` 
 - Using custom **[USBMap.kext](https://github.com/corpnewt/USBMap)** to properly enable USB ports and hubs,  instead of FakePCIID.kexts *(which will cause slow startup and wifi issues in Big Sur)*
 - Using cholonam's [Sinetek-rtsx.kext](https://github.com/cholonam/Sinetek-rtsx/releases) to enable SD card reader *([original version](https://github.com/sinetek/Sinetek-rtsx) is causing kernel panic in Big Sur when mounting SD card)*
+- Using RealtekRTL8111.kext to enable LAN
+- Using modified version of `CodecCommander.kext` to resolve `ALC668` audio [issue](https://www.tonymacx86.com/threads/alc1150-dual-boot-with-windows-and-10-10-3-no-sound-solved.162380/) when dual-booting with Windows.
