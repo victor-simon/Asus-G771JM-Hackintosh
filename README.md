@@ -19,5 +19,12 @@ It's been a very long time since I've done a *fresh install* on this unit, as I 
  - Note that I preferred to use **Clover** *(v5123 or greater)*, because I am using the internal NVMe drive/controller for my OSX installation with the latest OEM BIOS which does NOT support booting from the NVMe controller and requires use of the **NvmExpressDxe.efi** driver with Clover installed to an EFI on one of the internal SATA drives.
  - OpenCore wasn't detecting the macOS system partition for whatever reason using this method but Clover was so I just chose to stick with it.
  - You can [build a custom BIOS](https://rog.asus.com/forum/showthread.php?110850-G771JM-Custom-BIOS-with-NVMe-Support) to enable support for booting directly from the NVMe controller/drive instead, but I was getting random BSOD in Windows and reverted back to this more stable method.
+ - You need to enable some DSDT patches in Clover to support Catalina or greater, specifically the `EC0 to EC` patch *(see more detailed installation notes below)* but essentially can use the same `config.plist` for Clover on your installation USB if installed for the same `Asus G771JM` model.
+
+## Detailed Installation and Configuration Notes
+
+**CLOVER RELATED:**
+ - **ACPI/DSDT/Patches**  include: `change _OSI to XOSI`, `change _DSM to XDSM`, `change EC0 to EC`, `change GFX0 to IGPU`, `change SAT0 to SATA`, `change EHC1 to EH01`, `change EHC2 to EH02`, and `change B0D3 to HDAU`
+ - 
  
 
