@@ -68,7 +68,9 @@ Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mod
 - Using acidanthera's [AirportBrcmFixup.kext](https://github.com/acidanthera/AirportBrcmFixup) to enable wireless but need to set `brcmfx-driver=2` boot argument to enable, as well as removing `AirPortBrcm4360_Injector.kext` from plugins folder within kext to support Big Sur.
 - Using acidanthera's [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM) to enable bluetooth
 	-  `BrcmPatchRAM3.kext`, `BrcmFirmwareData.kext`, and `BrcmBluetoothInjector.kext` 
-- Using custom **[USBMap.kext](https://github.com/corpnewt/USBMap)** to properly enable USB ports and hubs,  instead of FakePCIID.kexts *(which will cause slow startup and wifi issues in Big Sur)*
+- Using custom **[USBMap.kext](https://github.com/corpnewt/USBMap)** to properly enable USB ports/hubs,  instead of FakePCIID.kexts *(which will cause slow startup and wifi issues in Big Sur)*
+	- Note this enables camera, and is also needed to enable wireless and sdcard support
 - Using cholonam's [Sinetek-rtsx.kext](https://github.com/cholonam/Sinetek-rtsx/releases) to enable SD card reader *([original version](https://github.com/sinetek/Sinetek-rtsx) is causing kernel panic in Big Sur when mounting SD card)*
-- Using RealtekRTL8111.kext to enable LAN
-- Using modified version of `CodecCommander.kext` to resolve `ALC668` audio [issue](https://www.tonymacx86.com/threads/alc1150-dual-boot-with-windows-and-10-10-3-no-sound-solved.162380/) when dual-booting with Windows.
+- Using Mieze's  [RealtekRTL8111.kext](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) to enable LAN
+- Using modified version of Rehabman's [CodecCommander.kext](https://bitbucket.org/RehabMan/os-x-eapd-codec-commander/downloads/) to resolve `ALC668` audio [issue](https://www.tonymacx86.com/threads/alc1150-dual-boot-with-windows-and-10-10-3-no-sound-solved.162380/) when dual-booting with Windows.
+- Using acidanthera's [NVMeFix](https://github.com/acidanthera/NVMeFix) to improve support for NVMe drive and enable TRIM *(optional)*
