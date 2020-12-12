@@ -60,6 +60,13 @@ Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mod
 - Note that it's better NOT to use the `CsmVideoDxe.efi` to enable higher resolutions if/when using external monitors and tp  keep Clover boot resolution at 1024x768.
 
 **KEXT RELATED:**
-- Using  **[VirtualSMC](https://github.com/acidanthera/virtualsmc/releases)**  _(instead of  [FakeSMC](https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/)  and  [ACPIBatteryManager.kext](https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/))_
+- Using **[Lilu.kext](https://github.com/acidanthera/lilu/releases)** and **[WhateverGreen.kext](https://github.com/acidanthera/whatevergreen/releases)** to enable Intel HD4600 _(with FakeID injection and device properties defined in Clover as outlined above)_
+- Using  **[VirtualSMC](https://github.com/acidanthera/virtualsmc/releases)**  _(instead of  [FakeSMC](https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/)  and  [ACPIBatteryManager.kext](https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/))_ to enable battery status
 	- Include all VirtualSMC kexts except for `SMCDellSensors.kext`
-
+- Using **[AsusSMC](https://github.com/hieplpvip/AsusSMC)** with `[als] Fake ALS` and `[kbd] Haswell` and `F3 to F6` patches without AsusSMCDaemon to enable Asus Function Keys and Keyboard Backlight _(instead of  [AsusNBFnKeys.kext](https://osxlatitude.com/forums/topic/1968-fn-hotkey-and-als-sensor-driver-for-asus-notebooks/))_
+- Using acidanthera's [VoodooPS2.kext](https://github.com/acidanthera/VoodooPS2) instead of emlydinesh's [ApplePS2SmartTouchPad.kext](https://osxlatitude.com/forums/topic/1948-elan-focaltech-and-synaptics-smart-touchpad-driver-mac-os-x) which supports AsusSMC and F9 key to disable trackpad
+- Using acidanthera's [AirportBrcmFixup.kext](https://github.com/acidanthera/AirportBrcmFixup) to enable wireless but need to set `brcmfx-driver=2` boot argument to enable, as well as removing `AirPortBrcm4360_Injector.kext` from plugins folder within kext to support Big Sur.
+- Using acidanthera's [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM) to enable bluetooth
+	-  `BrcmPatchRAM3.kext`, `BrcmFirmwareData.kext`, and `BrcmBluetoothInjector.kext` 
+- Using custom **[USBMap.kext](https://github.com/corpnewt/USBMap)** to properly enable USB ports and hubs,  instead of FakePCIID.kexts *(which will cause slow startup and wifi issues in Big Sur)*
+- Using cholonam's [Sinetek-rtsx.kext](https://github.com/cholonam/Sinetek-rtsx/releases) to enable SD card reader *([original version](https://github.com/sinetek/Sinetek-rtsx) is causing kernel panic in Big Sur when mounting SD card)*
