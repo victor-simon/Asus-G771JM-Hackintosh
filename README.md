@@ -1,6 +1,6 @@
 # Asus-G771JM-Hackintosh
 **Hackintosh Installation Guide  for Asus ROG G771JM**
-<p align="center" style="margin:0 auto !important;text-align:center !important;"><img src="https://github.com/ouija/Asus-S510UA-DS71-Hackintosh/raw/master/Images/Asus-S510UA-DS71-Hackintosh.png"></p>
+<p align="center" style="margin:0 auto !important;text-align:center !important;"><img src="https://github.com/ouija/Asus-G771JM-Hackintosh/raw/master/Images/Asus-G771JM-Hackintosh.png"></p>
 
 ## Preface
 It's been a very long time since I've done a *fresh install* on this unit, as I hackintoshed it when first getting this unit 6 or 7 years ago and have only done upgrades ever since.   This is more for tracking my own notes than a guide, so let me know if the installation instructions should be updated in any way.
@@ -8,7 +8,7 @@ It's been a very long time since I've done a *fresh install* on this unit, as I 
 ## Hardware Specs
 - Intel Core i7-4710HQ [Haswell] Processor 2.5 GHz (Turbo up to 3.5 GHz)
 - NVIDIA GeForce GTX 860M (4GB GDDR5, GM107) Optimus w/Intel HD5600
-- Shitty OEM Mediatek MT7630E (Ralink) Wireless adapter, replaced with [BCM94352HMB](https://www.newegg.ca/broadcom-bcm94352hmb-m-2-mini-pci-e/p/0XM-00BD-00005)
+- Mediatek MT7630E (Ralink) Wireless adapter [unsupported]Ima, replaced with [BCM94352HMB](https://www.newegg.ca/broadcom-bcm94352hmb-m-2-mini-pci-e/p/0XM-00BD-00005)
 - Realktek HD Audio ALC668
 - Realtek RTS5208 PCI Card Reader
 - Asus SmartTouch (Synaptics) PS2 Touchpad
