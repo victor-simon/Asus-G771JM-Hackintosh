@@ -57,6 +57,9 @@ Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mod
 		- key: `framebuffer-cursormem` value: `00009000` type: `DATA`
 		- key: `framebuffer-patch-enable` value: `01000000` type: `DATA`
 
-- Note that it's better NOT to use the CsmVideoDxe.efi to enable higher resolutions if/when using external monitors and keep Clover boot resolution at 1024x768.
+- Note that it's better NOT to use the `CsmVideoDxe.efi` to enable higher resolutions if/when using external monitors and tp  keep Clover boot resolution at 1024x768.
 
+**KEXT RELATED:**
+- Using  **[VirtualSMC](https://github.com/acidanthera/virtualsmc/releases)**  _(instead of  [FakeSMC](https://bitbucket.org/RehabMan/os-x-fakesmc-kozlek/downloads/)  and  [ACPIBatteryManager.kext](https://bitbucket.org/RehabMan/os-x-acpi-battery-driver/downloads/))_
+	- Include all VirtualSMC kexts except for `SMCDellSensors.kext`
 
