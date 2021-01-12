@@ -3,7 +3,7 @@
 <p align="center" style="margin:0 auto !important;text-align:center !important;"><img src="https://github.com/ouija/Asus-G771JM-Hackintosh/raw/master/Images/Asus-G771JM-Hackintosh.png"></p>
 
 ## Preface
-It's been a very long time since I've done a *fresh install* on this unit, as I hackintoshed it with when first getting this unit 6 or 7 years ago with **Mavericks**, and have only done upgrades since then, so this is more for my own notes than an actual installation guide.
+It's been a very long time since I've done a *fresh install* on this unit, as I hackintoshed it with when first getting this unit 6 or 7 years ago with **Mavericks**, and have only done upgrades since then, so this is more for my own notes than an actual installation guide, and currently is in relation to supporting **macOS Big Sur**.
 
 ## Hardware Specs
 - Intel Core i7-4710HQ [Haswell] Processor 2.5 GHz (Turbo up to 3.5 GHz)
