@@ -20,7 +20,8 @@ It's been a very long time since I've done a *fresh install* on this unit, as I 
  - OpenCore wasn't detecting the macOS system partition for whatever reason using this method but Clover was so I just chose to stick with it.
  - You can [build a custom BIOS](https://rog.asus.com/forum/showthread.php?110850-G771JM-Custom-BIOS-with-NVMe-Support) to enable support for booting directly from the NVMe controller/drive instead, but I was getting random BSOD in Windows and reverted back to this more stable method.
  - You need to enable some DSDT patches in Clover to support Catalina or greater, specifically the `EC0 to EC` patch *(see more detailed installation notes below)* but essentially can use the same `config.plist` for Clover on your installation USB if installed for the same `Asus G771JM` model.
- - **Improtant:** Ensure you select the `Preboot` partition after the second reboot during installation to avoid issues with AppStore downloads failing post-upgrade. (read more [here](https://github.com/CloverHackyColor/CloverBootloader/issues/300#issuecomment-731096921) and [here](https://www.reddit.com/r/hackintosh/comments/jtv7cn/clover_big_sur_app_store_download_stuck_on/))
+ - **Improtant:** Ensure you select the `Preboot` partition after the second reboot during installation to avoid issues with AppStore downloads failing post-upgrade. (read more [here](https://github.com/CloverHackyColor/CloverBootloader/issues/300#issuecomment-731096921) and [here](https://www.reddit.com/r/hackintosh/comments/jtv7cn/clover_big_sur_app_store_download_stuck_on/)) 
+	 - Edit the Clover `config.plist` file *(if using the one provided here)* and comment out or remove the line that hides this `Preboot` partition prior to installing Big Sur!
 
 ## Detailed Installation and Configuration Notes
 **BIOS RELATED:**
