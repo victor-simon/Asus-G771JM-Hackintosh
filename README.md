@@ -22,6 +22,8 @@ It's been a very long time since I've done a *fresh install* on this unit, as I 
  - You need to enable some DSDT patches in Clover to support Catalina or greater, specifically the `EC0 to EC` patch *(see more detailed installation notes below)* but essentially can use the same `config.plist` for Clover on your installation USB if installed for the same `Asus G771JM` model.
  - **Improtant:** Ensure you select the `Preboot` partition after the second reboot during installation to avoid issues with AppStore downloads failing post-upgrade. (read more [here](https://github.com/CloverHackyColor/CloverBootloader/issues/300#issuecomment-731096921) and [here](https://www.reddit.com/r/hackintosh/comments/jtv7cn/clover_big_sur_app_store_download_stuck_on/)) 
 	 - Edit the Clover `config.plist` file *(if using the one provided here)* and comment out or remove the line that hides this `Preboot` partition prior to installing Big Sur!
+	 - Signout of Apple ID and clearing cache, as well as booting once from preboot with SIP enabled seemed to finally make it work again.
+	 - Because of this issue, moving to OpenCore might be preferable, but this system seems to have an issue with restart not working *(still investigating)*
 
 ## Detailed Installation and Configuration Notes
 **BIOS RELATED:**
