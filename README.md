@@ -16,8 +16,8 @@ It's been a very long time since I've done a *fresh install* on this unit, as I 
 ## Quick Installation Notes
 
  - Use one of the [guides](https://www.tonymacx86.com/threads/how-to-create-a-macos-big-sur-public-beta-installation-usb.300100/) available on the internet to create USB installer for Big Sur and complete installation. 
- - Note that I preferred to use **Clover** *(v5123 or greater)*, because I am using the internal NVMe drive/controller for my OSX installation with the latest OEM BIOS which does NOT support booting from the NVMe controller and requires use of the **NvmExpressDxe.efi** driver with Clover installed to an EFI on one of the internal SATA drives.
- - OpenCore wasn't detecting the macOS system partition for whatever reason using this method but Clover was so I just chose to stick with it.
+ - Note that I preferred to use **Clover** *(v5123 or greater)*, as OpenCore seems to have an issue with rebooting on this machine *(shutdown/sleep are fine, but restart fails on a blank screen)*; There are notes below about configuring OpenCore for reference.
+ - I have also installed macOS to an internal NVMe drive and am booting from the Windows EFI partition  (because the bios lacks NVMe boot support) and originally thought OpenCore was failing to detect macOS due to this, but further testing found that this was due to originally upgrading Big Sur via the main installation partition instead of the preboot partition (see below), which was another reason I chose to stick with Clover.
  - You can [build a custom BIOS](https://rog.asus.com/forum/showthread.php?110850-G771JM-Custom-BIOS-with-NVMe-Support) to enable support for booting directly from the NVMe controller/drive instead, but I was getting random BSOD in Windows and reverted back to this more stable method.
  - You need to enable some DSDT patches in Clover to support Catalina or greater, specifically the `EC0 to EC` patch *(see more detailed installation notes below)* but essentially can use the same `config.plist` for Clover on your installation USB if installed for the same `Asus G771JM` model.
  - **Improtant:** Ensure you select the `Preboot` partition after the second reboot during installation to avoid issues with AppStore downloads failing post-upgrade. (read more [here](https://github.com/CloverHackyColor/CloverBootloader/issues/300#issuecomment-731096921) and [here](https://www.reddit.com/r/hackintosh/comments/jtv7cn/clover_big_sur_app_store_download_stuck_on/)) 
@@ -88,3 +88,12 @@ Ensure BIOS has Display Memory set to 64MB and that both Secure Boot and CSM mod
  - Applied `USB3_PRW 0x0D (instant wake)` patch to fix USB causing wake after sleep.
  - Applied `[bat] Asus G75VW` patch for battery status support.
  - Applied [patches to disable Nvidia Optimus](https://www.insanelymac.com/forum/topic/295584-disabling-nvidia-optimus-card-on-all-laptops/) and improve battery life.
+
+**OpenCore Related:**
+
+ - Note that I experienced issues with restart failing while using OpenCore and for that reason chose to stick with Clover for now, but OpenCore is pretty much the standard bootloader now when it comes to macOS.
+ - Follow [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/) specific to Haswell Laptops  to get started. 
+ - Note that (like with Clover), I had to set the bootloader resolution to 1024x768 in OpenCore or display output was garbled;  To do this edit `UEFI -> Output -> Resolution` in the OpenCore `config.plist` and set it to 1024x768.
+ - There were also issues with `AppleALC` causing the system to fail on boot when `alcid` boot arg was present (or having DeviceProperties set for audio);  I believe this is due to needing the GFX0 -> IGPU and B0D3 -> HDAU patches in place  (I quickly tested using a patched DSDT and this fixed it; Still need to test with OpenCore hotpatch instead).
+ - Getting Battery Status and AsusSMC/Keyboard Backlight requires DSDT edits, since I couldn't find any SSDT-based equivlents for this, however using a DSDT with OpenCore is not recommended, since it applies the ACPI to _all operating systems_ in a multiboot setup, so be careful when going this route.
+ - If migrating from Clover, ensure you've upgraded to Big Sur via the suggested `Preboot` method above, or OpenCore will fail to detect the macOS partition.
